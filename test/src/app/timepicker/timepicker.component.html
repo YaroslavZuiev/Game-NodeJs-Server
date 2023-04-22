@@ -1,0 +1,39 @@
+<section class="timepicker">
+  <header class="timepicker__header">
+    <div class="timepicker__header-icon"></div>
+    <h3 class="h3-16">Start Time</h3>
+  </header>
+  <div class="timepicker__body">
+    <div class="timepicker__content">
+      <div class="label">
+        <span class="h5-13">Hour</span>
+      </div>
+      <div class="timepicker__controls">
+        <div class="h3-16 timepicker__controls-content">{{ hour }}</div>
+        <div class="timepicker__controls-update">
+          <div class="timepicker__controls-increment control" (click)="changeHours(hour,'+')"></div>
+          <div class="timepicker__controls-decrement control" (click)="changeHours(hour,'-')"></div>
+        </div>
+      </div>
+    </div>
+    <div class="timepicker__content">
+      <div class="label">
+        <span class="h5-13">Minutes</span>
+      </div>
+      <div class="timepicker__controls">
+        <div class="h3-16 timepicker__controls-content">:{{ minutes }}</div>
+        <div class="timepicker__controls-update">
+          <div class="timepicker__controls-increment control" (click)="changeMinutes(minutes,'+')"></div>
+          <div class="timepicker__controls-decrement control" (click)="changeMinutes(minutes,'-')"></div>
+        </div>
+      </div>
+    </div>
+    <div class="timepicker__tabs">
+      <div class="timepicker__tab"
+           [class.selected]="selectedPeriod === period.tab"
+           *ngFor="let period of periods" (click)="getPeriod(period.tab)">
+        {{ period.tab }}
+      </div>
+    </div>
+  </div>
+</section>

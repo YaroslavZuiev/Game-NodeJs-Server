@@ -1,0 +1,41 @@
+.kippo-card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease-out;
+}
+
+.kippo-card:hover {
+  transform: scale(1.05);
+}
+
+.kippo-card__header {
+  padding: 20px;
+  text-align: center;
+}
+
+.kippo-card__profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.kippo-card__name {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.kippo-card__body {
+  padding: 20px;
+}
+
+.kippo-card__bio {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+}

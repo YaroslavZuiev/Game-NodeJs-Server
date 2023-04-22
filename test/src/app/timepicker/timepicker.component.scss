@@ -1,0 +1,92 @@
+.timepicker {
+  //remove
+  margin: 80px;
+  //
+  padding: 24px;
+  width: 344px;
+  background-color: #252e42;
+  border-radius: 8px;
+
+  &__header {
+    display: flex;
+
+    &-icon {
+      padding-right: 12px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__body {
+    justify-content: space-between;
+    align-items: flex-end;
+    display: flex;
+    padding-top: 20px;
+  }
+
+  &__content {
+    border-bottom: 1px solid #ffffff52;
+    width: 73px;
+    height: 60px;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+
+    &-content {
+      padding-top: 4px;
+      color: #fff;
+    }
+
+    &-update {
+      padding-right: var(--spacing-2-4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    &-increment {
+      background: url('/assets/images/triangle-up.svg') no-repeat;
+    }
+
+    &-decrement {
+      background: url('/assets/images/triangle-down.svg') no-repeat;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    align-items: center;
+    width: 101px;
+    height: 40px;
+    padding: 4px;
+    border: 1px solid #ffffff29;
+    border-radius: 8px;
+  }
+
+  &__tab {
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 32px;
+    color: #fff;
+  }
+}
+
+.label {
+  color: #ffffff8f;
+}
+
+.control {
+  width: 10px;
+  height: 6px;
+}
+
+.selected {
+  transition: 1s background-color;
+  border-radius: 4px;
+  background-color: #ffffff29;
+}
