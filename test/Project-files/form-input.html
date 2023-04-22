@@ -1,0 +1,28 @@
+<div
+  class="control-wrapper has-label has-placeholder"
+  (click)="input.focus()"
+  [class.empty-control]="!control?.value"
+  [class.has-errors]="control?.invalid && control?.touched"
+>
+  <div class="label-container">
+    <label class="label">{{ label }}</label>
+  </div>
+  <div>
+    <input
+      #input
+      [type]="type"
+      class="control"
+      [(ngModel)]="value"
+      [disabled]="disabled"
+      (focusout)="onTouch()"
+      [placeholder]="placeholder"
+    />
+    <img alt="Eye" [src]="imgSrc" *ngIf="showPasswordIcon" (click)="changeInputType()" />
+  </div>
+</div>
+
+<div class="text-danger error-message">
+  <ng-container *ngFor="let key of errorKeys">
+    <ng-container *ngIf="errorsMessages?.[key] && control?.touched">{{ errorsMessages?.[key] }} </ng-container>
+  </ng-container>
+</div>

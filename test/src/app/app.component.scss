@@ -1,0 +1,96 @@
+.wrapper {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "nav article aside"
+    "footer footer footer";
+  grid-template-rows: 5% 1fr 5%;
+  grid-template-columns: 20% 1fr 15%;
+  height: 100vh;
+  margin: 0;
+
+  .header {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-area: header;
+    color: #fff;
+    background-color: black;
+  }
+
+  .aside {
+    grid-area: aside;
+    background-color: gold;
+  }
+
+  .article {
+    grid-area: article;
+    background-color: brown;
+  }
+
+  .nav {
+    grid-area: nav;
+    background-color: green;
+  }
+
+  .footer {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-area: footer;
+    color: #fff;
+    background-color: blue;
+  }
+}
+
+//.quarter {
+//  width: 100%;
+//
+//  &__range {
+//    width: 400px;
+//    margin-top: 16px;
+//    position: relative;
+//    z-index: 999;
+//    padding: 20px;
+//    border-radius: 8px;
+//    background: orange;
+//
+//    &:hover {
+//      background-color: red;
+//    }
+//
+//    &:active {
+//      background-color: green;
+//    }
+//
+//    &:first-child {
+//      margin-top: 0;
+//    }
+//  }
+//}
+//
+//
+//@font-face {
+//  font-family: 'Inter';
+//  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap');
+//  font-weight: 100 700;
+//  font-style: normal;
+//  font-display: swap;
+//}
+//
+//.stretchy-text__text {
+//  font-family: 'Inter', sans-serif;
+//  font-weight: 400;
+//  font-size: 36px;
+//  display: inline-block;
+//  transition: font-variation-settings 0.2s ease-out;
+//}
+//
+//.stretchy-text__text:hover {
+//  font-variation-settings: 'wght' 700;
+//}
+//
+//.stretchy-text__text:active {
+//  font-variation-settings: 'wght' 100;
+//}
+
