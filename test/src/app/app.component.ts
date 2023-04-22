@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormArray, FormBuilder, FormGroup, ValidationErrors, ValidatorFn} from "@angular/forms";
+import {AbstractControl, FormArray, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn} from "@angular/forms";
 import {CheckboxEnum} from "./checkbox.enum";
 import {BehaviorSubject, bindCallback, from, interval, throwError} from "rxjs";
 import {catchError, first, mapTo, mergeMap, scan, startWith, switchMap, takeWhile} from "rxjs/operators";
@@ -16,7 +16,7 @@ import {DateTime} from 'luxon';
 
 export class AppComponent implements OnInit {
 
-  public formGroup!: FormGroup;
+  public formGroup!: UntypedFormGroup;
   public checkbox = [CheckboxEnum.check1, CheckboxEnum.check2, CheckboxEnum.check3];
   public showCapsLock = false;
   public test = {isActive: false, isTest: true, isConst: true};
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   public quarters: any[];
   public selectedItem: any;
 
-  constructor(private fb: FormBuilder, private service: TestService) {
+  constructor(private fb: UntypedFormBuilder, private service: TestService) {
   }
 
   // public get getCheckbox(): FormArray {
