@@ -1,20 +1,17 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "defaultCollection": "@angular-eslint/schematics"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "PEEX": {
+    "APP": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
           "strict": true
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {}
         }
       },
       "root": "",
@@ -24,7 +21,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/PEEX",
+            "outputPath": "dist/APP",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -75,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "PEEX:build:production"
+              "browserTarget": "APP:build:production"
             },
             "development": {
-              "browserTarget": "PEEX:build:development"
+              "browserTarget": "APP:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "PEEX:build"
+            "browserTarget": "APP:build"
           }
         },
         "test": {
@@ -105,9 +102,18 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "PEEX"
+  "defaultProject": "APP"
 }
