@@ -13,11 +13,7 @@ import { DateTime } from 'luxon';
 })
 export class AppComponent implements OnInit {
   public formGroup!: UntypedFormGroup;
-  public checkbox = [
-    CheckboxEnum.check1,
-    CheckboxEnum.check2,
-    CheckboxEnum.check3,
-  ];
+  public checkbox = [CheckboxEnum.check1, CheckboxEnum.check2, CheckboxEnum.check3];
   public showCapsLock = false;
   public test = { isActive: false, isTest: true, isConst: true };
   public timer: any;
@@ -119,10 +115,7 @@ export class AppComponent implements OnInit {
 
   public buildQuarterTitle(startDate: Date, endDate: Date): string {
     const datePipe = new DatePipe('en-US');
-    return `(${datePipe.transform(startDate, 'MMM')} - ${datePipe.transform(
-      endDate,
-      'MMM'
-    )})`;
+    return `(${datePipe.transform(startDate, 'MMM')} - ${datePipe.transform(endDate, 'MMM')})`;
   }
 
   public detectCurrentQuarter(date: Date): number {
@@ -133,30 +126,14 @@ export class AppComponent implements OnInit {
     const currentQuarter = this.detectCurrentQuarter(new Date()) + 1;
     const quarterCounter = 0;
     const quarterAccumulation: any[] = [];
-    this.buildQuarters(
-      quarterCounter,
-      currentQuarter,
-      quarterAccumulation,
-      currentQuarter
-    );
+    this.buildQuarters(quarterCounter, currentQuarter, quarterAccumulation, currentQuarter);
   }
 
   public createQuarter(iterationQuarter: number, isCurrent: boolean): any {
-    const startDateOfQuarter = DateTime.fromFormat(
-      String(iterationQuarter),
-      'q'
-    );
+    const startDateOfQuarter = DateTime.fromFormat(String(iterationQuarter), 'q');
     const endDateOfQuarter = startDateOfQuarter.endOf('quarter');
-    const start = new Date(
-      startDateOfQuarter.year,
-      startDateOfQuarter.month - 1,
-      startDateOfQuarter.day
-    );
-    const end = new Date(
-      endDateOfQuarter.year,
-      endDateOfQuarter.month - 1,
-      endDateOfQuarter.day
-    );
+    const start = new Date(startDateOfQuarter.year, startDateOfQuarter.month - 1, startDateOfQuarter.day);
+    const end = new Date(endDateOfQuarter.year, endDateOfQuarter.month - 1, endDateOfQuarter.day);
     return {
       startDate: start,
       endDate: isCurrent ? new Date() : end,
@@ -168,56 +145,31 @@ export class AppComponent implements OnInit {
     quarterCounter: number,
     iterationQuarter: number,
     quarterAccumulation: any[],
-    current: number
+    current: number,
   ): void {
     const quartersInYear = 4;
     const isCurrent = iterationQuarter === current;
     if (quarterCounter < quartersInYear) {
       if (iterationQuarter > 0) {
-        const currentQuarterData = this.createQuarter(
-          iterationQuarter,
-          isCurrent
-        );
+        const currentQuarterData = this.createQuarter(iterationQuarter, isCurrent);
         quarterAccumulation.push({
           startDate: currentQuarterData.startDate,
           endDate: currentQuarterData.endDate,
           tag: `Q${iterationQuarter}`,
-          quarter: this.buildQuarterTitle(
-            currentQuarterData.startDate,
-            currentQuarterData.endDate
-          ),
+          quarter: this.buildQuarterTitle(currentQuarterData.startDate, currentQuarterData.endDate),
           year: currentQuarterData.year,
         });
       } else {
-        const pastQuarterData = this.createQuarter(
-          quartersInYear + iterationQuarter,
-          isCurrent
-        );
+        const pastQuarterData = this.createQuarter(quartersInYear + iterationQuarter, isCurrent);
         quarterAccumulation.push({
           tag: `Q${quartersInYear + iterationQuarter}`,
-          quarter: this.buildQuarterTitle(
-            pastQuarterData.startDate,
-            pastQuarterData.endDate
-          ),
-          startDate: new Date(
-            pastQuarterData.startDate.setFullYear(
-              pastQuarterData.startDate.getFullYear() - 1
-            )
-          ),
-          endDate: new Date(
-            pastQuarterData.endDate.setFullYear(
-              pastQuarterData.endDate.getFullYear() - 1
-            )
-          ),
+          quarter: this.buildQuarterTitle(pastQuarterData.startDate, pastQuarterData.endDate),
+          startDate: new Date(pastQuarterData.startDate.setFullYear(pastQuarterData.startDate.getFullYear() - 1)),
+          endDate: new Date(pastQuarterData.endDate.setFullYear(pastQuarterData.endDate.getFullYear() - 1)),
           year: pastQuarterData.year - 1,
         });
       }
-      this.buildQuarters(
-        quarterCounter + 1,
-        iterationQuarter - 1,
-        quarterAccumulation,
-        current
-      );
+      this.buildQuarters(quarterCounter + 1, iterationQuarter - 1, quarterAccumulation, current);
       this.quarters = quarterAccumulation;
     }
     return;
@@ -225,9 +177,7 @@ export class AppComponent implements OnInit {
 
   public static validData(data: string[] = []): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const word = data.find(
-        (data) => data.toLocaleLowerCase() === control.value.toLocaleLowerCase()
-      );
+      const word = data.find((data) => data.toLocaleLowerCase() === control.value.toLocaleLowerCase());
 
       return word ? { banned: { bannedWord: word } } : null;
     };
