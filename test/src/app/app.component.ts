@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewContainerRef } from '@angular/core';
 import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { CheckboxEnum } from './checkbox.enum';
 import { BehaviorSubject } from 'rxjs';
 import { TestService } from '../test.service';
 import { DatePipe } from '@angular/common';
 import { DateTime } from 'luxon';
+import { PainterCanvasComponent } from './painter-canvas/painter-canvas.component';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,12 @@ export class AppComponent implements OnInit {
   public quarters: any[];
   public selectedItem: any;
 
-  constructor(private fb: UntypedFormBuilder, private service: TestService) {}
+  constructor(
+    private fb: UntypedFormBuilder,
+    private service: TestService,
+    private view: ViewContainerRef,
+    private resolver: ComponentFactoryResolver,
+  ) {}
 
   // public get getCheckbox(): FormArray {
   //   return this.formGroup.get('checkbox') as FormArray;
@@ -32,7 +38,17 @@ export class AppComponent implements OnInit {
   //   return this.getCheckbox.controls as FormGroup[];
   // }
 
-  public ngOnInit(): void {
+  public async ngOnInit(): Promise<void> {
+    setTimeout(() => {
+      this.resolver.resolveComponentFactory(PainterCanvasComponent);
+      this.view.createComponent(PainterCanvasComponent);
+    }, 2000);
+    document.cookie = 'user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT';
+    console.log(document.cookie);
+
+    const x = 'test1 test'.replace(/^\w{4}\d/, 'removed');
+    console.log(x);
+
     this.createQuarters();
     new Date().toLocaleTimeString();
     // this.getQuarters();
@@ -177,7 +193,7 @@ export class AppComponent implements OnInit {
 
   public static validData(data: string[] = []): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const word = data.find((data) => data.toLocaleLowerCase() === control.value.toLocaleLowerCase());
+      const word = data.find((el) => el.toLocaleLowerCase() === control.value.toLocaleLowerCase());
 
       return word ? { banned: { bannedWord: word } } : null;
     };
