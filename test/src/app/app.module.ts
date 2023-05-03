@@ -9,6 +9,14 @@ import { KippoHoverCardComponent } from './kippo-hover-card/kippo-hover-card.com
 import { PainterCanvasComponent } from './painter-canvas/painter-canvas.component';
 import { TimepickerComponent } from './timepicker/timepicker.component';
 import { PeexTestsExampleComponent } from './peex-tests-example/peex-tests-example.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AlexProjectComponent } from './alex-project/alex-project.component';
+
+const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader => {
+  return new TranslateHttpLoader(http);
+};
 
 @NgModule({
   declarations: [
@@ -19,8 +27,20 @@ import { PeexTestsExampleComponent } from './peex-tests-example/peex-tests-examp
     PainterCanvasComponent,
     TimepickerComponent,
     PeexTestsExampleComponent,
+    AlexProjectComponent,
   ],
-  imports: [BrowserModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient],
+      },
+      defaultLanguage: 'en',
+    }),
+  ],
   entryComponents: [PainterCanvasComponent],
   providers: [],
   bootstrap: [AppComponent],

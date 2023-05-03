@@ -39,15 +39,15 @@ export class AppComponent implements OnInit {
   // }
 
   public async ngOnInit(): Promise<void> {
-    setTimeout(() => {
-      this.resolver.resolveComponentFactory(PainterCanvasComponent);
-      this.view.createComponent(PainterCanvasComponent);
-    }, 2000);
-    document.cookie = 'user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT';
-    console.log(document.cookie);
-
-    const x = 'test1 test'.replace(/^\w{4}\d/, 'removed');
-    console.log(x);
+    // setTimeout(() => {
+    //   this.resolver.resolveComponentFactory(PainterCanvasComponent);
+    //   this.view.createComponent(PainterCanvasComponent);
+    // }, 2000);
+    // document.cookie = 'user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT';
+    // console.log(document.cookie);
+    //
+    // const x = 'test1 test'.replace(/^\w{4}\d/, 'removed');
+    // console.log(x);
 
     this.createQuarters();
     new Date().toLocaleTimeString();

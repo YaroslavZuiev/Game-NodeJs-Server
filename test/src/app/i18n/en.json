@@ -1,0 +1,14 @@
+{
+  "HEADER": {
+    "LINKS": {
+      "TITLE": "The best place what have you ever seen?",
+      "SUBTITLE": "describe it",
+      "CONTENT": "Contacts"
+    },
+    "BODY": {
+      "TITLE": "My Account",
+      "SUBTITLE": "Settings",
+      "BODY": "Logout"
+    }
+  }
+}

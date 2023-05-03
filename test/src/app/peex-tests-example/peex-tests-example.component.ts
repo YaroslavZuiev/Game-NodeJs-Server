@@ -1,38 +1,18 @@
-import { Component, ComponentFactoryResolver, OnInit, ViewContainerRef } from '@angular/core';
-import {BehaviorSubject, firstValueFrom } from 'rxjs';
-import { PainterCanvasComponent } from '../painter-canvas/painter-canvas.component';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-peex-tests-example',
   templateUrl: './peex-tests-example.component.html',
-  styleUrls: ['./peex-tests-example.component.css'],
+  styleUrls: ['./peex-tests-example.component.scss'],
 })
-export class PeexTestsExampleComponent implements OnInit {
-  constructor() {}
-  public values$ = new BehaviorSubject<any>({
-    locations: [{ siteNo: '258081' }, { siteNo: '2345' }],
-    tags: ['Los Angeles', 'New York'],
-  });
+export class PeexTestsExampleComponent implements OnInit, AfterViewInit {
+  @ViewChild('iframe') public iframe: ElementRef<HTMLIFrameElement>;
+  public ngOnInit(): void {}
 
-  public async ngOnInit(): Promise<void> {
-    await this.normalizeReportLocations({
-      locations: [{ siteNo: '258081' }, { siteNo: '2345' }],
-      tags: ['Los Angeles', 'New York'],
-    });
-  }
-
-  public async normalizeReportLocations(selectedLocations: any): Promise<string> {
-    let extractedTagsLocations = [];
-    let extractedLocations = [];
-
-    if (selectedLocations.tags?.length) {
-      extractedTagsLocations = await firstValueFrom(this.values$);
-    }
-
-    if (selectedLocations.locations?.length) {
-      extractedLocations = selectedLocations.locations.map((item: { siteNo: string }) => item.siteNo);
-    }
-
-    return [...extractedLocations, ...extractedTagsLocations].join(',');
+  public ngAfterViewInit(): void {
+    this.iframe.nativeElement.contentWindow;
+    this.iframe.nativeElement.contentDocument!.body.style.background = 'red';
+    this.iframe.nativeElement.contentDocument!.body.style.color = 'white';
+    this.iframe.nativeElement.contentDocument!.body.appendChild(document.createElement('div')).textContent = 'Hello';
   }
 }
