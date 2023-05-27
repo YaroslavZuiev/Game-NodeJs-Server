@@ -1,0 +1,31 @@
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 85px;
+  background: linear-gradient(344deg, rgba(0,219,255,1) 0%, rgba(9,22,129,1) 97%);
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 72px;
+
+    &-right {
+      max-width: 150px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-left {
+      width: 100%;
+      height: 100%;
+    }
+    &-image {
+      width: 100px;
+      height: 100%;
+    }
+  }
+}
