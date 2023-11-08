@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-spinner',
   template: `
-    <div *ngIf="show" class="spinner-container">
+    <div *ngIf="true" class="spinner-container">
       <div class="spinner"></div>
     </div>
   `,

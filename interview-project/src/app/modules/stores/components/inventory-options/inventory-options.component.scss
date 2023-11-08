@@ -1,0 +1,105 @@
+.dropdown {
+  &__creation {
+    height: 100%;
+    &--inventory {
+      position: relative;
+      padding: 0 8px;
+      background: white;
+      border-radius: 8px;
+    }
+
+    &--input {
+      width: 135px;
+      border: none;
+      outline: none;
+      padding: 8px 4px;
+      border-bottom-left-radius: 8px;
+      border-top-left-radius: 8px;
+    }
+
+    &--controls {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 10px;
+      height: 100%;
+    }
+
+    &--dropdown {
+      z-index: 999;
+      border-radius: 8px;
+      background: white;
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      left: 0;
+    }
+
+    &--btn {
+      width: 40px;
+      height: 100%;
+      border-radius: 8px;
+    }
+  }
+}
+
+.icon {
+  width: 10px;
+  height: 10px;
+  display: block;
+  box-sizing: content-box;
+}
+
+.btn-add {
+  background-image: url('/assets/plus.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.btn-remove {
+  background-image: url('/assets/dash-lg.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.amount {
+  max-width: 70px;
+  width: 100%;
+}
+
+.caret-down {
+  background: url('/assets/caret-down.svg') no-repeat center;
+}
+
+.caret-up {
+  background: url('/assets/caret-up.svg') no-repeat center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.form-control {
+  height: 100%;
+}
+
+.dropdown-list {
+  &:hover {
+    background: brown;
+  }
+
+  &:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  &__item {
+    padding: 0 12px;
+  }
+}

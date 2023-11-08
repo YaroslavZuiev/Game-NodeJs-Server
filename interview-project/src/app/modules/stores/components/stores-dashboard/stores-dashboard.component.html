@@ -1,0 +1,35 @@
+<!--//Used bootstrap styles but better replace styles into scss file-->
+<section class="container-xxl">
+  <div class="row border-top border-top-1 border-secondary mt-5">
+    <div class="col-9 d-flex pt-4 flex-column">
+      <div class="d-flex justify-content-center text-light pb-4">Stores</div>
+      <div class="d-flex flex-wrap gap-3">
+        <app-store-item
+          *ngFor="let store of storeItems"
+          [storeItem]="store"
+          (remove)="removeStore(store)">
+        </app-store-item>
+      </div>
+    </div>
+    <div class="col-3 mt-2 border-start">
+      <app-add-new-store
+        (refreshStoreList)="getStoreItems($event)"></app-add-new-store>
+    </div>
+    <ng-container *ngTemplateOutlet="toast"></ng-container>
+  </div>
+</section>
+
+<ng-template #toast>
+  <div
+    [class.show]="reloadStoreList"
+    class="toast align-items-center position-absolute mt-1 ms-2"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        {{ toastMessage }}
+      </div>
+    </div>
+  </div>
+</ng-template>

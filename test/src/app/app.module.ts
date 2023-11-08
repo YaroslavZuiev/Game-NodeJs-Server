@@ -10,9 +10,8 @@ import { PainterCanvasComponent } from './painter-canvas/painter-canvas.componen
 import { TimepickerComponent } from './timepicker/timepicker.component';
 import { PeexTestsExampleComponent } from './peex-tests-example/peex-tests-example.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { AlexProjectComponent } from './alex-project/alex-project.component';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader => {
   return new TranslateHttpLoader(http);
@@ -27,9 +26,9 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader => {
     PainterCanvasComponent,
     TimepickerComponent,
     PeexTestsExampleComponent,
-    AlexProjectComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     ReactiveFormsModule,
     TranslateModule.forRoot({
@@ -41,7 +40,6 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader => {
       defaultLanguage: 'en',
     }),
   ],
-  entryComponents: [PainterCanvasComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

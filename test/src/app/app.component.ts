@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { TestService } from '../test.service';
 import { DatePipe } from '@angular/common';
 import { DateTime } from 'luxon';
-import { PainterCanvasComponent } from './painter-canvas/painter-canvas.component';
+import {printHello} from "./helper/common-helper.helper";
 
 @Component({
   selector: 'app-root',
@@ -39,6 +39,7 @@ export class AppComponent implements OnInit {
   // }
 
   public async ngOnInit(): Promise<void> {
+    printHello('Yaroslav')
     // setTimeout(() => {
     //   this.resolver.resolveComponentFactory(PainterCanvasComponent);
     //   this.view.createComponent(PainterCanvasComponent);
@@ -98,6 +99,17 @@ export class AppComponent implements OnInit {
     //   let distance = ele!.offsetLeft + ele!.offsetWidth - e.clientX;
     //   distance < 15 && distance > -15 ? ele!.classList.add('more-width') : ele!.classList.remove('more-width');
     // });
+    const a = this.addAsync(2, 4, (item) => {
+      return item;
+    });
+  }
+
+  public addAsync(a: any, b: any, callback: (arg0: any) => void): number {
+    const result = a + b;
+    setTimeout(() => {
+      callback(result);
+    }, 500);
+    return result;
   }
 
   // public getCheckboxName():void{

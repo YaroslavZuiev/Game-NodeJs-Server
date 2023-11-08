@@ -1,0 +1,28 @@
+<!--//Used bootstrap styles but better replace styles into scss file-->
+<section class="store-item border border-1 border-light text-light py-2">
+  <div class="d-flex justify-content-between px-2">
+    <span class="h1">{{ storeItem.goodsTotal }}</span>
+    <span class="store-item__name">{{ storeItem.name }}</span>
+  </div>
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="trash ms-2" (click)="removeStore()">
+      <span class="trash__icon"></span>
+    </div>
+    <div
+      class="d-flex align-items-end flex-column px-2"
+      *ngIf="storeItem.mostPopular.name; else empty">
+      <span class="h5">Most Popular:</span>
+      <span
+      >{{ storeItem.mostPopular.name }} - In Stock
+        {{ storeItem.mostPopular.amount }} items</span
+      >
+    </div>
+  </div>
+</section>
+
+<ng-template #empty>
+  <div class="d-flex align-items-end flex-column px-2">
+    <span class="h5">Most Popular:</span>
+    <span>Empty</span>
+  </div>
+</ng-template>
