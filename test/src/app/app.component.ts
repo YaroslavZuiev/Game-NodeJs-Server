@@ -22,6 +22,8 @@ export class AppComponent implements OnInit {
   public test$ = new BehaviorSubject<number | null>(null);
   public quarters: any[];
   public selectedItem: any;
+  public yLines: any;
+  public xLines: any;
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -39,6 +41,8 @@ export class AppComponent implements OnInit {
   // }
 
   public async ngOnInit(): Promise<void> {
+    this.yLines = Array.from({ length: 11 }, (_, index) => index * 50);
+    this.xLines = Array.from({ length: 11 }, (_, index) => index * 50);
     printHello('Yaroslav')
     // setTimeout(() => {
     //   this.resolver.resolveComponentFactory(PainterCanvasComponent);

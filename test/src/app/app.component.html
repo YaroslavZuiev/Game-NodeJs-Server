@@ -1,12 +1,11 @@
-<div class="parent">
-  <div class="parent__child-1"></div>
-  <div class="parent__child-2"></div>
-</div>
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Draw horizontal lines -->
+  <ng-container *ngFor="let y of yLines">
+    <line [attr.y1]="y" x1="0" [attr.y2]="y" x2="500" stroke="#ccc"></line>
+  </ng-container>
 
-<div class="wrapper">
-  <div class="header"></div>
-  <div class="body"></div>
-  <div class="footer"></div>
-</div>
-
-<div>{{ 'BODY.TITLE' | translate }}</div>
+  <!-- Draw vertical lines -->
+  <ng-container *ngFor="let x of xLines">
+    <line [attr.x1]="x" y1="0" [attr.x2]="x" y2="500" stroke="#ccc"></line>
+  </ng-container>
+</svg>
