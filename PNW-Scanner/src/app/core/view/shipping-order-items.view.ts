@@ -17,6 +17,7 @@ export class ShippingOrderItem implements IParsable<ShippingOrderItem> {
         public productName?: string,
         public quantity?: number,
         public currentQuantity?: number,
+        public isPicked?: boolean,
     ) {
     }
 
