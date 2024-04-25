@@ -12,20 +12,22 @@ export class ShippingOrderItemsView implements IParsable<ShippingOrderItemsView>
 
 export class ShippingOrderItem implements IParsable<ShippingOrderItem> {
     constructor(
-        public id?: number,
+        public productId?: number,
         public productUpc?: number,
         public productName?: string,
-        public quantity?: number,
+        public pickedQuantity?: number,
         public currentQuantity?: number,
+        public quantity?: number,
         public isPicked?: boolean,
     ) {
     }
 
     public parse(data: any): ShippingOrderItem {
-        this.id = data['id'];
+        this.productId = data['productId'];
         this.productUpc = data['productUpc'];
         this.productName = data['productName'];
-        this.quantity = data['quantity'];
+        this.pickedQuantity = data['pickedQuantity'];
+        this.quantity = data['quantity'] || 0;
         this.currentQuantity = data['currentQuantity'] || 0;
         return this;
     }
