@@ -1,6 +1,6 @@
 import {IParsable} from "../models/i-parsable";
 
-export class ShippingOrderItemsView implements IParsable<ShippingOrderItemsView>{
+export class ShippingOrderItemsView implements IParsable<ShippingOrderItemsView> {
     public items: ShippingOrderItem[] = [];
 
     public parse(data: any): ShippingOrderItemsView {
