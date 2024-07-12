@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {HeaderComponent} from "./components/header/header.component";
 import {FooterComponent} from "./components/footer/footer.component";
@@ -10,12 +10,5 @@ import {FooterComponent} from "./components/footer/footer.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
-  factorial(num: number):  number {
-    return num !== 1 ? num * this.factorial(num - 1) : 1;
-  }
-
-  ngOnInit(): void {
-    console.log(this.factorial(5));
-  }
+export class AppComponent{
 }
